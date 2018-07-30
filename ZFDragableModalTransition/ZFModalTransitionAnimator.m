@@ -263,15 +263,19 @@
             velocityForSelectedDirection = velocity.x;
         }
 
-        if (velocityForSelectedDirection > 100
-            && (self.direction == ZFModalTransitonDirectionRight
-                || self.direction == ZFModalTransitonDirectionBottom)) {
+        if (self.hideDirectionAny) {
+            if (fabs(velocityForSelectedDirection) > 100) {
                 [self finishInteractiveTransition];
-            } else if (velocityForSelectedDirection < -100 && self.direction == ZFModalTransitonDirectionLeft) {
-                [self finishInteractiveTransition];
-            } else {
-                [self cancelInteractiveTransition];
             }
+        } else if (velocityForSelectedDirection > 100
+                   && (self.direction == ZFModalTransitonDirectionRight
+                       || self.direction == ZFModalTransitonDirectionBottom)) {
+                       [self finishInteractiveTransition];
+                   } else if (velocityForSelectedDirection < -100 && self.direction == ZFModalTransitonDirectionLeft) {
+                       [self finishInteractiveTransition];
+                   } else {
+                       [self cancelInteractiveTransition];
+                   }
         self.isInteractive = NO;
     }
 }
