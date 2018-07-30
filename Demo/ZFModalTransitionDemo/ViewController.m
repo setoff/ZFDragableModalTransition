@@ -53,6 +53,7 @@
         self.animator.direction = ZFModalTransitonDirectionRight;
     } else {
         self.animator.direction = ZFModalTransitonDirectionBottom;
+        self.animator.hideDirectionAny = YES;
     }
     
     modalVC.transitioningDelegate = self.animator;
